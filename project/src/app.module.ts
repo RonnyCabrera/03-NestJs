@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import {AppPeliculaController} from "./app.pelicula-controller";
 import {ParametrosController} from "./parametros.controller";
 import {UsuarioService} from "./usuario.service";
+import {UsuarioController} from "./usuario.controller";
 
 @Module({
   imports: [], //importar otros modulos
-  controllers: [AppController, AppPeliculaController, ParametrosController],
+  controllers: [AppController, AppPeliculaController, ParametrosController, UsuarioController],
   components: [UsuarioService],
 })
 export class AppModule {}

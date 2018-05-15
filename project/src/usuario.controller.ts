@@ -12,7 +12,7 @@ export class UsuarioController {
     crearUsuario(
         @Query() queryParametros,
         @Res() response,
-        @Req() resquest
+        @Req() resquest,
     ) {
         const enviaNombre = queryParametros.nombre;
         const enviaApellido = queryParametros.apellido;
@@ -53,7 +53,12 @@ export class UsuarioController {
             @Res() response,
             ) {
         const nombreCookie = request.params.nombreCookie;
-        request.cookie(nombreCookie);
-        return response.send();
+        const existeCookie = request.cookies(nombreCookie);
+
+        if(existeCookie) {
+            return response.send(existeCookie);
+        }else {
+            return response.status(400).send({mensaej:'No existe la Cookie', status:400});
+        }
     }
 }
